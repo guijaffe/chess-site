@@ -1,0 +1,412 @@
+:root {
+    --second-family: "Merriweather", Georgia, serif;
+    --font-family: "Golos Text", serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #313131;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 110%;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 54px;
+    line-height: 120%;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 135%;
+    text-transform: uppercase;
+}
+
+h4 {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 110%;
+    text-transform: uppercase;
+}
+
+p {
+    font-family: var(--font-family);
+    font-size: 20px;
+    line-height: 120%;
+}
+
+header {
+    width: 100%;
+    background: url("/images/background.png"), #E6DBCF;
+    background-blend-mode: color-burn;
+}
+
+footer {
+    width: 100%;
+    background: #E6DBCF;
+}
+
+.btn {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    border-radius: 66px;
+    padding: 18px 47px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn--primary {
+    background: #1f1f1f;
+    color: #fff;
+}
+
+.btn--primary:hover {
+    background: #fbce51;
+    color: #1f1f1f;
+}
+
+.btn--outline {
+    border: 2px solid #1f1f1f;
+    color: #1f1f1f;
+    background: none;
+}
+
+.btn--outline:hover {
+    background: #1f1f1f;
+    color: #fff;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1242px;
+    padding: 0 20px;
+}
+
+.header {
+    background: url("/images/chess-city.png") no-repeat center;
+}
+
+.header-box {
+    max-width: 542px;
+    padding: 62px 0 130px 0;
+}
+
+.header__logo {
+    padding-top: 26px;
+    display: inline-block;
+}
+
+.header__logo img {
+    display: block;
+}
+
+.header-box__title h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.header-box__title .line {
+    width: 100%;
+    text-align: left;
+}
+
+.header-box__title .center {
+    text-align: center;
+}
+
+.header-box__title .right {
+    text-align: right;
+}
+
+.header-box__subtitle {
+    padding: 24px 0 40px 0;
+}
+
+.header-box__subtitle p {
+    font-size: 18px;
+    line-height: 130%;
+    text-align: center;
+}
+
+.header-box__controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.header-box__controls a {
+    width: 100%;
+}
+
+.running-line {
+    background: #f54932;
+    padding: 18px 12px;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.running-line p {
+    font-family: var(--second-family);
+    text-align: center;
+    font-size: 22px;
+    color: white;
+}
+
+.running-line p::before {
+    content: '•';
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 15px;
+    color: #FFFFFF;
+}
+
+.running-line__text {
+    display: flex;
+    width: fit-content;
+    animation: running-line 35s linear infinite;
+    will-change: transform;
+}
+
+
+.event-box {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 64px;
+    padding-top: 80px;
+}
+
+.event-box__title {
+    grid-area: 1 / 1 / 2 / 9;
+    padding-right: 41px;
+    align-content: center;
+}
+.event-box__image--people{
+    grid-area: 1 / 9 / 2 / 13;
+}
+
+.event-box__image img {
+    width: 100%;
+}
+
+.event-box__image--checkmate {
+    grid-area: 2 / 1 / 4 / 6;
+}
+
+.event-box__details {
+    grid-area: 2 / 6 / 3 / 13;
+}
+.event-box__table {
+    grid-area: 3 / 6 / 4 / 13;
+}
+
+/* Доп элементы */
+.text--highlight {
+    font-weight: 700;
+    color: #f54932;
+}
+.text--through {
+    text-decoration: line-through;
+    text-decoration-color: red;
+}
+
+.event-box__table {
+    font-family: var(--font-family);
+    font-size: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 60px 0 48px 0;
+}
+
+.event-box__table td {
+    border-bottom: 2px solid #D0D0D0;
+}
+
+.event-box__table td:first-child {
+    width: 45%;
+    opacity: 0.7;
+    border-right: 2px solid #D0D0D0;
+}
+
+.event-box__table td:last-child {
+    font-weight: bold;
+    padding: 16px;
+}
+
+.event-box__contact {
+    color: #3057a2;
+}
+
+.event-box__table tr:last-child td {
+    border-bottom: none;
+}
+
+.future {
+    padding-top: 200px;
+}
+
+.future__title {
+    max-width: 806px;
+}
+
+
+.future-title {
+    display: flex;
+    align-items: center;
+    position: relative; /* Для того чтобы p могло позиционироваться относительно h2 */
+}
+
+.future-title__heading {
+    margin: 0;
+}
+
+.future-title__highlight {
+    font-weight: bold; /* Чтобы выделить слово "Васюков" */
+}
+
+.future-title__subtitle {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 120%;
+    color: #3057a2;
+    transform: translateY(-120%) translateX(320px);
+    width: 280px;
+}
+
+.future-steps {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    padding-top: 54px;
+}
+
+.future-steps__item {
+    font-family: var(--font-family);
+    display: flex;
+    background: url("/images/background.png"), #E6DBCF;
+    background-blend-mode: color-burn;
+    padding: 20px;
+    gap: 20px;
+    position: relative;
+    font-weight: 500;
+}
+
+.future-steps__item::before {
+    content: attr(data-number);
+    font-weight: 600;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+}
+
+.future-steps__item--layout-1 {
+    grid-area: 1 / 1 / 2 / 5;
+}
+.future-steps__item--layout-2 {
+    grid-area: 1 / 5 / 2 / 9;
+}
+.future-steps__item--layout-3 {
+    grid-area: 1 / 9 / 3 / 13;
+}
+.future-steps__item--layout-4 {
+    grid-area: 2 / 1 / 3 / 5;
+}
+.future-steps__item--layout-5 {
+    grid-area: 2 / 5 / 3 / 9;
+}
+.future-steps__item--layout-6 {
+    grid-area: 3 / 1 / 4 / 5;
+}
+.future-steps__item--layout-7 {
+    grid-area: 3 / 5 / 4 / 13;
+}
+.future-steps__item--layout-7 p {
+    max-width: 446px;
+}
+
+.description {
+    padding: 40px 0 72px 0;
+}
+
+.description p {
+    opacity: 0.6;
+    font-size: 16px;
+}
+
+.airplane {
+    position: absolute;
+    left: 60%;
+    transform: translateY(-50%);
+}
+
+
+@keyframes running-line {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+@media (max-width: 768px) {
+    .event-box {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-row-gap: 32px;
+        padding-top: 40px;
+    }
+
+    .event-box__title,
+    .event-box__image--people,
+    .event-box__image--checkmate,
+    .event-box__details,
+    .event-box__table {
+        grid-area: unset;
+    }
+
+    .event-box__image img {
+        width: 100%;
+        height: auto;
+    }
+
+    .future-title {
+        flex-direction: column; /* Элементы переведены в колонку */
+        align-items: flex-start; /* Выравниваем по левому краю */
+    }
+
+    .future-title__subtitle {
+        position: relative;
+        transform: translateX(0%);
+        width: 100%;
+    }
+}
