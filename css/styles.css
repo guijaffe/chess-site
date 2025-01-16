@@ -1,6 +1,6 @@
 :root {
-    --second-family: "Merriweather", Georgia, serif;
     --font-family: "Golos Text", serif;
+    --second-family: "Merriweather", Georgia, serif;
 }
 
 * {
@@ -40,10 +40,10 @@ h3 {
 }
 
 h4 {
-    font-family: var(--second-family);
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 110%;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 120%;
     text-transform: uppercase;
 }
 
@@ -85,15 +85,28 @@ footer {
     color: #1f1f1f;
 }
 
-.btn--outline {
+.btn--outline-primary{
     border: 2px solid #1f1f1f;
     color: #1f1f1f;
     background: none;
 }
 
-.btn--outline:hover {
+.btn--outline-primary:hover {
     background: #1f1f1f;
     color: #fff;
+}
+
+.btn--outline-secondary {
+    border: 1px solid #3057a2;
+    border-radius: 62px;
+    padding: 7px 12px;
+    color: #3057a2;
+    line-height: 25px
+}
+
+.btn--outline-secondary:hover {
+    background: #3057a2;
+    color: #FFFFFF;
 }
 
 .container {
@@ -106,7 +119,7 @@ footer {
     background: url("/images/chess-city.png") no-repeat center;
 }
 
-.header-box {
+.header__content {
     max-width: 542px;
     padding: 62px 0 130px 0;
 }
@@ -120,43 +133,43 @@ footer {
     display: block;
 }
 
-.header-box__title h1 {
+.header__title h1 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
 }
 
-.header-box__title .line {
+.header__title .line {
     width: 100%;
     text-align: left;
 }
 
-.header-box__title .center {
+.header__title .center {
     text-align: center;
 }
 
-.header-box__title .right {
+.header__title .right {
     text-align: right;
 }
 
-.header-box__subtitle {
+.header__subtitle {
     padding: 24px 0 40px 0;
 }
 
-.header-box__subtitle p {
+.header__subtitle p {
     font-size: 18px;
     line-height: 130%;
     text-align: center;
 }
 
-.header-box__controls {
+.header__controls {
     display: flex;
     justify-content: space-between;
     gap: 16px;
 }
 
-.header-box__controls a {
+.header__controls a {
     width: 100%;
 }
 
@@ -270,15 +283,8 @@ footer {
     padding-top: 200px;
 }
 
-.future__title {
-    max-width: 806px;
-}
-
-
 .future-title {
-    display: flex;
-    align-items: center;
-    position: relative; /* Для того чтобы p могло позиционироваться относительно h2 */
+    max-width: 806px;
 }
 
 .future-title__heading {
@@ -356,6 +362,42 @@ footer {
     max-width: 446px;
 }
 
+.airplane {
+    position: absolute;
+    left: 60%;
+    transform: translateY(-50%);
+}
+
+.participants {
+    padding-top: 200px;
+}
+
+.participants__list {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 0 140px 0;
+}
+
+.participants__item {
+    min-width: 394px;
+    text-align: center;
+}
+
+.participants__item__title {
+    padding-top: 28px;
+}
+
+.participants__item__description {
+    font-size: 20px;
+    line-height: 120%;
+    opacity: 0.6;
+    padding-top: 6px;
+}
+
+.participants__item__button {
+    padding-top: 20px;
+}
+
 .description {
     padding: 40px 0 72px 0;
 }
@@ -363,12 +405,6 @@ footer {
 .description p {
     opacity: 0.6;
     font-size: 16px;
-}
-
-.airplane {
-    position: absolute;
-    left: 60%;
-    transform: translateY(-50%);
 }
 
 
@@ -397,11 +433,6 @@ footer {
     .event-box__image img {
         width: 100%;
         height: auto;
-    }
-
-    .future-title {
-        flex-direction: column; /* Элементы переведены в колонку */
-        align-items: flex-start; /* Выравниваем по левому краю */
     }
 
     .future-title__subtitle {
