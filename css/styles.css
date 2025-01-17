@@ -11,6 +11,10 @@
     scroll-behavior: smooth;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 a {
     text-decoration: none;
 }
@@ -101,7 +105,7 @@ footer {
     border-radius: 62px;
     padding: 7px 12px;
     color: #3057a2;
-    line-height: 25px
+    display: inline-flex;
 }
 
 .btn--outline-secondary:hover {
@@ -248,6 +252,35 @@ footer {
     text-decoration-color: red;
 }
 
+.arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #313131;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.arrow img {
+    width: 8px;
+    height: 16px;
+}
+
+.arrow#prev img {
+    transform: rotate(180deg);
+}
+
+.arrow:hover {
+    background: #fbce51;
+}
+
+.arrow:disabled {
+    background: #d6d6d6;
+}
+
 .event-box__table {
     font-family: var(--font-family);
     font-size: 20px;
@@ -289,10 +322,6 @@ footer {
 
 .future-title__heading {
     margin: 0;
-}
-
-.future-title__highlight {
-    font-weight: bold; /* Чтобы выделить слово "Васюков" */
 }
 
 .future-title__subtitle {
@@ -372,19 +401,16 @@ footer {
     padding-top: 200px;
 }
 
-.participants__list {
+.participants__title {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 60px 0 140px 0;
-}
-
-.participants__item {
-    min-width: 394px;
-    text-align: center;
+    width: 80%;
 }
 
 .participants__item__title {
     padding-top: 28px;
+    text-align: center;
 }
 
 .participants__item__description {
@@ -398,6 +424,23 @@ footer {
     padding-top: 20px;
 }
 
+.participants__title__arrows {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    justify-content: right;
+    transform: translateY(-55px);
+}
+
+.participants__current-slide {
+    font-size: 16px;
+}
+
+.participants__total-slides {
+    font-size: 16px;
+    opacity: 0.6;
+}
+
 .description {
     padding: 40px 0 72px 0;
 }
@@ -407,19 +450,110 @@ footer {
     font-size: 16px;
 }
 
+.card {
+    max-width: 394px;
+    justify-items: center;
+    width: 100%;
+    padding: 0 37px;
+}
+
+.card img {
+    width: 100%;
+}
+
+.carousel .card {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    justify-self: center;
+    scroll-snap-align: center;
+}
+
+.carousel.no-transition {
+    scroll-behavior: auto;
+}
+
+.caousel.dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.carousel.dragging .card {
+    cursor: grab;
+    user-select: none;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper .carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc(100% / 3);
+    overflow: hidden;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
 
 @keyframes running-line {
     0% { transform: translateX(0); }
     100% { transform: translateX(-100%); }
 }
 
-@media (max-width: 768px) {
-    .event-box {
-        display: grid;
+@media (max-width: 1024px) {
+    .future-steps {
         grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        grid-row-gap: 32px;
-        padding-top: 40px;
+    }
+
+    .future-steps__item--layout-1,
+    .future-steps__item--layout-2,
+    .future-steps__item--layout-3,
+    .future-steps__item--layout-4,
+    .future-steps__item--layout-5,
+    .future-steps__item--layout-6,
+    .future-steps__item--layout-7 {
+        grid-area: auto;
+    }
+
+    .wrapper .carousel {
+        mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+    }
+}
+
+@media (max-width: 768px) {
+    .event-box__table, .event-box__table tbody, .event-box__table tr, .event-box__table td {
+        display: block;
+        width: 100%;
+        padding: 0;
+    }
+
+    .event-box__table td {
+        padding: 12px 0;
+    }
+
+    .event-box__table td:first-child {
+        width: 100%;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    .event-box__table td:last-child {
+        padding: 12px 0;
+    }
+
+
+    .event-box {
+        grid-template-columns: 1fr;
     }
 
     .event-box__title,
@@ -439,5 +573,18 @@ footer {
         position: relative;
         transform: translateX(0%);
         width: 100%;
+    }
+
+    .wrapper .carousel {
+        grid-auto-columns: 100%;
+    }
+
+    .wrapper .carousel {
+        order: -1;
+    }
+
+    .participants__title__arrows {
+        justify-content: center;
+        transform: translateY(0);
     }
 }

@@ -37,7 +37,7 @@
 					</div>
 					<div class="header__controls">
 						<a href="#event" class="btn btn--primary" aria-label="Поддержать шахматную мысль">Поддержать шахматную мысль</a>
-						<a href="" class="btn btn--outline-primary">Подробнее о турнире</a>
+						<a href="#participants" class="btn btn--outline-primary">Подробнее о турнире</a>
 					</div>
 				</div>
 			</div>
@@ -144,31 +144,27 @@
 				</div>
 			</div>
 		</section>
-		<section class="participants">
+		<section class="participants" id="participants">
 			<div class="container">
 				<div class="participants__title">
 					<h2 class="participants__title__heading">
 						Участники турнира
 					</h2>
-					<div class="participants__title__arrows">
 
-					</div>
 				</div>
-				<div class="participants__list">
-					<div class="participants__item">
-						<img src="images/participant.png" alt="Участник турнира">
-						<h4 class="participants__item__title">Хозе-Рауль Капабланка</h4>
-						<p class="participants__item__description">Чемпион мира по шахматам</p>
-						<div class="participants__item__button">
-							<a href="" class="btn btn--outline-secondary">Подробнее</a>
-						</div>
+				<div class="wrapper">
+					<div class="participants__title__arrows">
+						<button class="arrow" id="prev">
+							<img src="images/icon/arrow.svg" alt="стрелка влево">
+						</button>
+						<p><span class="participants__current-slide"></span><span class="participants__total-slides"></span></p>
+						<button class="arrow" id="next">
+							<img src="images/icon/arrow.svg" alt="стрелка вправо">
+						</button>
 					</div>
-					<div class="participants__item">
-						<img src="images/participant.png" alt="Участник турнира">
-					</div>
-					<div class="participants__item">
-						<img src="images/participant.png" alt="Участник турнира">
-					</div>
+					<ul class="participants__list carousel">
+
+					</ul>
 				</div>
 			</div>
 		</section>
@@ -198,5 +194,6 @@
 			</div>
 		</div>
 	</footer>
+	<script src="js/index.js" defer></script>
 </body>
 </html>
