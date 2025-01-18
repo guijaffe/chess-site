@@ -543,8 +543,6 @@ footer {
     }
 }
 
-
-
 @media (max-width: 768px) {
     .dots-container {
         display: flex;

@@ -52,8 +52,7 @@ function initializeCarousel() {
 	function updateCurrentSlide() {
 		const scrollPosition = carousel.scrollLeft;
 		const currentIndex = Math.round(scrollPosition / firstCardWidth);
-		const currentSlide = (currentIndex % totalSlides) + 1;
-		document.querySelector('.participants__current-slide').textContent = currentSlide;
+		document.querySelector('.participants__current-slide').textContent = String((currentIndex % totalSlides) + 1);
 		document.querySelector('.participants__total-slides').textContent = ` / ${totalSlides}`;
 	}
 
@@ -63,7 +62,7 @@ function initializeCarousel() {
 	}
 
 	const autoPlay = () => {
-		if (window.innerWidth < 780) return; // отключил автопрокрутку на экранах меньше 780px
+		if (window.innerWidth < 768) return; // Отключил автопрокрутку на экранах меньше 768px
 		timeoutId = setTimeout(() => scrollToCard("next"), 4000);
 	};
 
@@ -123,31 +122,44 @@ function initializeFutureSteps() {
 	const rightButton = document.getElementById('right');
 	const dotsContainer = document.querySelector('.dots-container');
 
-	let isDragging = false;
-	let startX, startScrollLeft;
+	const totalSlides = 7;
+	let isScrolling = false;
+
+	function getCurrentSlide() {
+		const scrollLeft = futureSteps.scrollLeft;
+		const cardWidth = futureSteps.offsetWidth;
+		return Math.round(scrollLeft / cardWidth) + 1;
+	}
 
 	function scrollToCard(direction) {
+		if (isScrolling) return;
+		isScrolling = true;
+
 		const scrollAmount = direction === 'left' ? -futureSteps.offsetWidth : futureSteps.offsetWidth;
 		futureSteps.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+
+
+		setTimeout(() => {
+			updateButtons();
+			updateDots();
+			isScrolling = false;
+		}, 500);
 	}
 
 	function updateButtons() {
-		const epsilon = 5;
-		const isAtStart = futureSteps.scrollLeft <= epsilon;
-		const isAtEnd = Math.ceil(futureSteps.scrollLeft + futureSteps.offsetWidth) >= futureSteps.scrollWidth - epsilon;
-		leftButton.disabled = isAtStart;
-		rightButton.disabled = isAtEnd;
+		const currentSlide = getCurrentSlide();
+		leftButton.disabled = currentSlide === 1;
+		rightButton.disabled = currentSlide === totalSlides;
 	}
 
 	function updateDots() {
-		const totalCards = futureSteps.children.length;
-		const currentIndex = Math.round(futureSteps.scrollLeft / futureSteps.offsetWidth);
+		const currentSlide = getCurrentSlide();
 		dotsContainer.innerHTML = '';
 
-		for (let i = 0; i < totalCards; i++) {
+		for (let i = 1; i <= totalSlides; i++) {
 			const dot = document.createElement('span');
 			dot.classList.add('dot');
-			if (i === currentIndex) dot.classList.add('active');
+			if (i === currentSlide) dot.classList.add('active');
 			dotsContainer.appendChild(dot);
 		}
 	}
@@ -155,35 +167,15 @@ function initializeFutureSteps() {
 	leftButton.addEventListener('click', () => scrollToCard('left'));
 	rightButton.addEventListener('click', () => scrollToCard('right'));
 
-	futureSteps.addEventListener('mousedown', (e) => {
-		isDragging = true;
-		startX = e.pageX;
-		startScrollLeft = futureSteps.scrollLeft;
-		futureSteps.style.cursor = 'grabbing';
-	});
-
-	futureSteps.addEventListener('mousemove', (e) => {
-		if (!isDragging) return;
-		e.preventDefault();
-		futureSteps.scrollLeft = startScrollLeft - (e.pageX - startX);
-	});
-
-	futureSteps.addEventListener('mouseup', () => {
-		isDragging = false;
-		futureSteps.style.cursor = 'grab';
-	});
-
-	futureSteps.addEventListener('mouseleave', () => {
-		isDragging = false;
-		futureSteps.style.cursor = 'grab';
+	futureSteps.addEventListener('scroll', () => {
+		if (!isScrolling) {
+			updateButtons();
+			updateDots();
+		}
 	});
 
 	updateButtons();
 	updateDots();
-	futureSteps.addEventListener('scroll', () => {
-		updateButtons();
-		updateDots();
-	});
 
 	function handleResize() {
 		if (window.innerWidth > 780) {
