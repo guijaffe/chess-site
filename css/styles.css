@@ -59,7 +59,7 @@ p {
 
 header {
     width: 100%;
-    background: url("/images/background.png"), #E6DBCF;
+    background: url("../images/background.png"), #E6DBCF;
     background-blend-mode: color-burn;
 }
 
@@ -121,7 +121,7 @@ footer {
 }
 
 .header {
-    background: url("/images/chess-city.png") no-repeat center;
+    background: url("../images/chess-city.png") no-repeat center;
 }
 
 .header__content {
@@ -349,7 +349,7 @@ footer {
 .future-steps__item {
     font-family: var(--font-family);
     display: flex;
-    background: url("/images/background.png"), #E6DBCF;
+    background: url("../images/background.png"), #E6DBCF;
     background-blend-mode: color-burn;
     padding: 20px;
     gap: 20px;
