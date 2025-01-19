@@ -182,8 +182,8 @@ function initializeFutureSteps() {
 			leftButton.style.display = 'none';
 			rightButton.style.display = 'none';
 		} else {
-			leftButton.style.display = 'block';
-			rightButton.style.display = 'block';
+			leftButton.style.display = 'flex';
+			rightButton.style.display = 'flex';
 		}
 	}
 

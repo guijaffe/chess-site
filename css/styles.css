@@ -60,7 +60,6 @@ p {
 header {
     width: 100%;
     background: url("../images/background.png"), #E6DBCF;
-    background-blend-mode: color-burn;
 }
 
 footer {
@@ -350,7 +349,7 @@ footer {
     font-family: var(--font-family);
     display: flex;
     background: url("../images/background.png"), #E6DBCF;
-    background-blend-mode: color-burn;
+
     padding: 20px;
     gap: 20px;
     position: relative;
@@ -594,6 +593,7 @@ footer {
 
     .header__content {
         padding: 40px 0 341px 0;
+        max-width: 100%;
     }
 
     .header__controls {
